@@ -64,24 +64,33 @@ function initMap() {
     function createMarker(place) {
           var placeLoc = place.geometry.location;
           var id = place.place_id;
-          console.log("id is ", id);
+          //console.log("id is ", id);
           var detailRequest = {placeId: id};
           console.log("detailRequest is ",detailRequest);
         //   service.getDetails({
         //             placeId: id}
-          service.getDetails(place, function(museum, status){
-              console.log(museum);
+
+          service.getDetails(place, function(destination, status){
+              console.log("destination is ", destination, " status is ", status);
+              var marker = new google.maps.Marker({
+                map: map,
+                title: place.name,
+                position: place.geometry.location,
+                address: destination.formatted_address,
+                phoneNum: destination.formatted_phone_number,
+                url: destination.website
+              });
+              console.log("marker add is ",destination.formatted_address);
+              google.maps.event.addListener(marker, 'click', function() {
+                console.log("in marker click listener");
+                infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' + destination.formatted_address + '<br>' +
+                 destination.formatted_phone_number + '<br><a href=' + destination.website + '>' + destination.website + '</a></div>');
+                // infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' + destination.formatted_address + '<br>' + place.place_id + '</div>');
+                infoWindow.open(map, marker);
+              });
           })
-          var marker = new google.maps.Marker({
-            map: map,
-            title: place.name,
-            position: place.geometry.location
-          });
-            google.maps.event.addListener(marker, 'click', function() {
-              console.log("in marker click listener");
-              infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.formatted_address + '<br>' + place.place_id + '</div>');
-              infoWindow.open(map, marker);
-            });
+
+
     } // end of createMarker function
   } else {
     // Browser doesn't support Geolocation
