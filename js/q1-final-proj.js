@@ -1,3 +1,8 @@
+$(document).ready(function() {
+  //$('select').material_select();
+ // initMap();
+});
+
 // geolocation section
 // Note: This example requires that you consent to location sharing when
 // prompted by your browser. If you see the error "The Geolocation service
@@ -56,15 +61,24 @@ function initMap() {
 
     function createMarker(place) {
           var placeLoc = place.geometry.location;
+          var id = place.place_id;
+          
           var marker = new google.maps.Marker({
             map: map,
             title: place.name,
             position: place.geometry.location
           });
-          marker.addListener(‘click’, function() {
+//          marker.addListener(‘click’, function() {
+            google.maps.event.addListener(marker, 'click', function() {
+            //let infowindow = new google.maps.InfoWindow;
+
               console.log("in marker click listener");
-              infowindow.setContent(“<h1>“+place.name+“</h1><div>Desc: </div>“);
-              infowindow.open(map, marker);
+              infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.formatted_address + '<br>' + place.place_id + '</div>');
+
+              //infowindow.setContent(“<h1>“+place.name+“</h1><div>Desc: </div>“);
+              //infowindow.setContent(“<h1>“+place.name+“</h1>“;
+               //infoWindow.setContent(place.name); //This works
+              infoWindow.open(map, marker);
             });
 
     // function createMarker(place) {
@@ -88,7 +102,7 @@ function initMap() {
     //         infowindow.setContent(place.name);
     //         infowindow.open(map, this);
     //       });
-      }); //DOMContentLoaded braces
+     // }); //DOMContentLoaded braces
   } // end of createMarker function
 
 
