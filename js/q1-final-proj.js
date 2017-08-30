@@ -1,4 +1,5 @@
 $(document).ready(function() {
+var service;
   //$('select').material_select();
  // initMap();
 });
@@ -38,7 +39,8 @@ function initMap() {
 
       //PlacesService code
     //   console.log("pos is: ",pos);
-      let service = new google.maps.places.PlacesService(map);
+    //   let service = new google.maps.places.PlacesService(map);
+      service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: pos,
         radius: 10000,
@@ -62,68 +64,31 @@ function initMap() {
     function createMarker(place) {
           var placeLoc = place.geometry.location;
           var id = place.place_id;
-          
+          console.log("id is ", id);
+          var detailRequest = {placeId: id};
+          console.log("detailRequest is ",detailRequest);
+        //   service.getDetails({
+        //             placeId: id}
+          service.getDetails(place, function(museum, status){
+              console.log(museum);
+          })
           var marker = new google.maps.Marker({
             map: map,
             title: place.name,
             position: place.geometry.location
           });
-//          marker.addListener(‘click’, function() {
             google.maps.event.addListener(marker, 'click', function() {
-            //let infowindow = new google.maps.InfoWindow;
-
               console.log("in marker click listener");
               infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.formatted_address + '<br>' + place.place_id + '</div>');
-
-              //infowindow.setContent(“<h1>“+place.name+“</h1><div>Desc: </div>“);
-              //infowindow.setContent(“<h1>“+place.name+“</h1>“;
-               //infoWindow.setContent(place.name); //This works
               infoWindow.open(map, marker);
             });
-
-    // function createMarker(place) {
-    // //    console.log("place = ",place);
-    // //    let infoWindow = new google.maps.InfoWindow;
-    // //    console.log("in createMarker infoWindow = ",infoWindow);
-    //
-    //   var placeLoc = place.geometry.location;
-    //   var marker = new google.maps.Marker({
-    //     map: map,
-    //     position: place.geometry.location
-    //   });
-    //
-    //   document.addEventListener('DOMContentLoaded', function() {
-    //
-    //       google.maps.event.addListener(marker, 'click', function() {
-    //           console.log("in marker click listener");
-    //     //   google.maps.event.addListener(map, 'click', function() {
-    //     //       console.log("in map click listener");
-    //         //let infoWindow = new google.maps.InfoWindow;
-    //         infowindow.setContent(place.name);
-    //         infowindow.open(map, this);
-    //       });
-     // }); //DOMContentLoaded braces
-  } // end of createMarker function
-
-
+    } // end of createMarker function
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
 } // enf of initMap function
-
-
-// function callback(results, status) {
-//     //console.log("in callback, results = ", results, "status = ",status, "infoWindow = ",infoWindow);
-//     console.log("infoWindow = ",infoWindow);
-//     if (status === google.maps.places.PlacesServiceStatus.OK) {
-//       for (let i = 0; i < results.length; i++) {
-//         createMarker(results[i]);
-//       }
-//     }
-// }
-
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
