@@ -19,7 +19,7 @@
             console.log( "ready!" );
         });
     </script>
-    <script src="js/q1-final-proj-index.js "></script>
+    <script src="js/q1-final-proj.js "></script>
     <link rel="stylesheet" href="css/q1-final-proj.css">
 
     <title>R U Bored?</title>
@@ -31,13 +31,7 @@
         <nav>
             <div class="nav-wrapper blue darken-3">
                 <a class="brand-logo">R U Bored?</a>
-                <!-- <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="index.html">R U Bored</a></li>
-                </ul>
-                <ul id="mobile-demo" class="right side-nav">
-                    <li><a href="index.html">R U Bored</a></li>
-                </ul> -->
+
             </div>
         </nav>
     </div>
@@ -48,35 +42,42 @@
             <div class="col s12">
                 <!-- <img class="responsive-img" src="img/hero.jpg" alt="Hero Pic"> -->
                 <h3 class="blue-text">R U Bored</h3>
-
+                <h4 class="blue-text">Let Us Help U Find Someplace To Go</h4>
             </div>
-            <div class="row">
-              <form class="col s12">
-                <div class="row"></div>
-                <div class="input-field col s12">
-                  <select multiple>
-                    <option value="" disabled selected>What Are You Interested In</option>
-                    <option value="1">Museums</option>
-                    <option value="2">Restaurants</option>
-                    <option value="3">Bars</option>
-                  </select>
-                  <label>Pick your Interests</label>
-                </div>
+            <div class="col s12 type-selection">
+                <ul id="selection-list">
+                  <!-- <li onclick="getType(this.id)" id="museum">Museums</li>
+                  <li onclick="getType(this.id)" id="restaurant">Restaurants</li>
+                  <li onclick="getType(this.id)" id="bars">Bars</li> -->
+                  <li class="selection-list" id="restaurant">
+                      <a href="geolocation.html#restaurant">Restaurants</a>
+                  </li>
+                  <li class="selection-list" id="bars">
+                      <a href="geolocation.html#bars">Bars</a>
+                  </li>
+                   <li class="selection-list" id="museum">
+                        <a href="geolocation.html#museum">Museum</a>
+                    </li>
+                    <li class="selection-list" id="gym">
+                        <a href="geolocation.html#gym">Gym</a>
+                    </li>
 
-                <div class="col s12">
-                    <!-- <img class="responsive-img" src="img/hero.jpg" alt="Hero Pic"> -->
-                    <a class="btn materialize-red place-order" href="order.html">FIND SOME PLACE TO GO!</a>
 
-                </div>
-
-            </form>
+                </ul>
             </div>
+            <script type="text/javascript">
+            function getType(str) {
+                console.log("in get type", str);
+                selectedType = str;
+                console.log("selectedType ",selectedType);
+            }
+            </script>
         </main>
 
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script> -->
 
 </body>
 </html>

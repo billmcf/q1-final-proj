@@ -1,24 +1,26 @@
 $(document).ready(function() {
-var service;
-  //$('select').material_select();
- // initMap();
-});
+    var service;
+    //
+    // $(".selection-list").click(function() {
+    //   console.log( "Handler for .click() called. this.id = ",this.id );
+    //   selectedType = this.id;
+    //   console.log("selectedType ",selectedType);
+    // });
+});  //end of document ready
+
 
 // geolocation section
-// Note: This example requires that you consent to location sharing when
-// prompted by your browser. If you see the error "The Geolocation service
-// failed.", it means you probably did not give permission for the browser to
-// locate you.
-
 let galvanizePos = {lat: 40.0165685, lng: -105.2816839}
 let billsHomePos = {lat: 39.938978299999995, lng: -105.14245729999999}
-let map, infoWindow, pos;
+let map, infoWindow, pos, type;
+let selectedType = window.location.hash.substring(1);
+
 // let service = new google.maps.places.PlacesService(map);
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: billsHomePos,
-    zoom: 13
+    zoom: 15
   });
   infoWindow = new google.maps.InfoWindow;
 
@@ -36,7 +38,7 @@ function initMap() {
       map.setCenter(pos);
       console.log("infoWindow = ",infoWindow);
       console.log("your pos is ",pos);
-
+      console.log("selectedType ",selectedType);
       //PlacesService code
     //   console.log("pos is: ",pos);
     //   let service = new google.maps.places.PlacesService(map);
@@ -44,7 +46,7 @@ function initMap() {
       service.nearbySearch({
         location: pos,
         radius: 10000,
-        type: ['museum']
+        type: [selectedType]
       }, callback);
 
     }, function() {
@@ -78,7 +80,8 @@ function initMap() {
                 position: place.geometry.location,
                 address: destination.formatted_address,
                 phoneNum: destination.formatted_phone_number,
-                url: destination.website
+                url: destination.website,
+                reviews: destination.reviews
               });
               console.log("marker add is ",destination.formatted_address);
               google.maps.event.addListener(marker, 'click', function() {
@@ -89,8 +92,6 @@ function initMap() {
                 infoWindow.open(map, marker);
               });
           })
-
-
     } // end of createMarker function
   } else {
     // Browser doesn't support Geolocation
@@ -109,3 +110,18 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 //
 // End of geolocation section
 //
+
+// "change #interests-selections" : function(e, t) {
+//  var changedValue = $(e.currentTarget).val();
+//  console.log(changedValue);
+// }
+//interests-selections
+
+
+
+// $('#type-submit').click((event) => {
+//     event.preventDefault();
+//     console.log("you clicked the button");
+//    console.log("selected dest types = ",$('#selections').val);
+//    let name = document.getElementById('name');
+//});
