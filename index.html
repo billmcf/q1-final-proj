@@ -14,24 +14,23 @@
     <link rel="stylesheet" href="css/q1-final-proj.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script>
+    <!-- <script>
         $( document ).ready(function() {
             console.log( "ready!" );
         });
-    </script>
+    </script> -->
     <script src="js/q1-final-proj.js "></script>
     <link rel="stylesheet" href="css/q1-final-proj.css">
 
-    <title>R U Bored?</title>
+    <title>R U Bored</title>
 </head>
 
 <body>
     <!––    Nav Bar Section             -->
     <div class="navbar-fixed">
         <nav>
-            <div class="nav-wrapper blue darken-3">
-                <a class="brand-logo">R U Bored?</a>
-
+            <div class="nav-wrapper blue darken-3 center-align">
+                <a class="brand-logo center-align">R U Bored</a>
             </div>
         </nav>
     </div>
@@ -39,45 +38,29 @@
         <!––    Main Section             -->
 
         <main>
-            <div class="col s12">
+            <div class="col s12 center-align">
                 <!-- <img class="responsive-img" src="img/hero.jpg" alt="Hero Pic"> -->
                 <h3 class="blue-text">R U Bored</h3>
-                <h4 class="blue-text">Let Us Help U Find Someplace To Go</h4>
+                <h4 class="blue-text">LOOKING FOR PLACES TO CHECK OUT</h4>
+                <h4 class="blue-text">CLICK BELOW FOR SOME NEARBY SUGGESTIONS</h4>
             </div>
-            <div class="col s12 type-selection">
+            <div class="col s12">
                 <ul id="selection-list">
-                  <!-- <li onclick="getType(this.id)" id="museum">Museums</li>
-                  <li onclick="getType(this.id)" id="restaurant">Restaurants</li>
-                  <li onclick="getType(this.id)" id="bars">Bars</li> -->
-                  <li class="selection-list" id="restaurant">
-                      <a href="geolocation.html#restaurant">Restaurants</a>
-                  </li>
-                  <li class="selection-list" id="bars">
-                      <a href="geolocation.html#bars">Bars</a>
-                  </li>
-                   <li class="selection-list" id="museum">
-                        <a href="geolocation.html#museum">Museum</a>
-                    </li>
-                    <li class="selection-list" id="gym">
-                        <a href="geolocation.html#gym">Gym</a>
-                    </li>
-
-
+                  <li><a href="geolocation.html#restaurant">Restaurants</a><i class="material-icons">add</i></li>
+                  <li><i class="material-icons prefix red-text">account_circle</i><a href="geolocation.html#bars">Bars</a></li>
+                  <li><a href="geolocation.html#museum">Museum</a></li>
+                  <li><a href="geolocation.html#park">Park</a></li>
+                  <li><a href="geolocation.html#movie_theater">Movie Theater</a></li>
+                  <li><a href="geolocation.html#bowling_alley">Bowling Alley</a></li>
+                  <li><a href="geolocation.html#atm">ATM</a><i class="material-icons">attach_money</i></li>
+                  <li><a href="geolocation.html#art_gallery">Art Gallery</a></li>
+                  <li><a href="geolocation.html#gym">Gym</a></li>
+                  <li><a href="geolocation.html#library">Library</a></li>
+                  <li><a href="geolocation.html#shopping_mall">Mall</a></li>
                 </ul>
             </div>
-            <script type="text/javascript">
-            function getType(str) {
-                console.log("in get type", str);
-                selectedType = str;
-                console.log("selectedType ",selectedType);
-            }
-            </script>
-        </main>
 
-    <!--Import jQuery before materialize.js-->
-    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
-    <!-- Compiled and minified JavaScript -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script> -->
+        </main>
 
 </body>
 </html>

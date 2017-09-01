@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var service;
+ //$('select').material_select();
     //
     // $(".selection-list").click(function() {
     //   console.log( "Handler for .click() called. this.id = ",this.id );
@@ -20,7 +21,7 @@ let selectedType = window.location.hash.substring(1);
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: billsHomePos,
-    zoom: 15
+    zoom: 14
   });
   infoWindow = new google.maps.InfoWindow;
 
@@ -45,7 +46,7 @@ function initMap() {
       service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: pos,
-        radius: 10000,
+        radius: 5000,
         type: [selectedType]
       }, callback);
 
@@ -103,7 +104,7 @@ function initMap() {
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
-                        'Error: Please Authorize Location Service' :
+                        'Error: Please Reload Page And Authorize Location Service' :
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
