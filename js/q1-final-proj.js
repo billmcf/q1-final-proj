@@ -10,7 +10,7 @@ let selectedType = window.location.hash.substring(1);
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: billsHomePos,
+    center: galvanizePos,
     zoom: 14
   });
   infoWindow = new google.maps.InfoWindow;
