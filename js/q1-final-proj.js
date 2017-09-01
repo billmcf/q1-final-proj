@@ -1,22 +1,12 @@
 $(document).ready(function() {
     var service;
- //$('select').material_select();
-    //
-    // $(".selection-list").click(function() {
-    //   console.log( "Handler for .click() called. this.id = ",this.id );
-    //   selectedType = this.id;
-    //   console.log("selectedType ",selectedType);
-    // });
 });  //end of document ready
-
 
 // geolocation section
 let galvanizePos = {lat: 40.0165685, lng: -105.2816839}
 let billsHomePos = {lat: 39.938978299999995, lng: -105.14245729999999}
 let map, infoWindow, pos, type;
 let selectedType = window.location.hash.substring(1);
-
-// let service = new google.maps.places.PlacesService(map);
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -40,9 +30,6 @@ function initMap() {
       console.log("infoWindow = ",infoWindow);
       console.log("your pos is ",pos);
       console.log("selectedType ",selectedType);
-      //PlacesService code
-    //   console.log("pos is: ",pos);
-    //   let service = new google.maps.places.PlacesService(map);
       service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: pos,
@@ -70,8 +57,6 @@ function initMap() {
           //console.log("id is ", id);
           var detailRequest = {placeId: id};
           console.log("detailRequest is ",detailRequest);
-        //   service.getDetails({
-        //             placeId: id}
 
           service.getDetails(place, function(destination, status){
               console.log("destination is ", destination, " status is ", status);
@@ -99,7 +84,7 @@ function initMap() {
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
-} // enf of initMap function
+} // end of initMap function
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
@@ -111,18 +96,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 //
 // End of geolocation section
 //
-
-// "change #interests-selections" : function(e, t) {
-//  var changedValue = $(e.currentTarget).val();
-//  console.log(changedValue);
-// }
-//interests-selections
-
-
-
-// $('#type-submit').click((event) => {
-//     event.preventDefault();
-//     console.log("you clicked the button");
-//    console.log("selected dest types = ",$('#selections').val);
-//    let name = document.getElementById('name');
-//});
